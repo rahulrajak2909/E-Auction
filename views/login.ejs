@@ -1,0 +1,131 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+  <% include head %>
+
+    <body>
+        <div class="wrapper">
+            <!-- header start -->
+        <% include header %>
+        <script>
+        function validate(){
+            var flag = true
+
+            var loginUsername=document.getElementById('loginUsername').value
+            var loginPassword=document.getElementById('loginPassword').value
+
+            var loginNameErr=document.getElementById('loginNameErr')
+            var loginPwdErr=document.getElementById('loginPwdErr')
+
+
+            if(loginUsername==''){
+                loginNameErr.innerHTML="Please Enter Login e-Mail"
+                flag=false
+            }
+            else{
+                loginNameErr.innerHTML=""
+            }     
+            
+            if(loginPassword==''){
+                loginPwdErr.innerHTML="Please Enter Login Password"
+                flag=false
+            }
+            else{
+                loginPwdErr.innerHTML=""
+            }     
+
+
+            return flag
+        }       
+        </script>   
+        
+        <div class="breadcrumb-area pt-255 pb-170" style="background-image: url(img/banner/banner-4.jpg)">
+            <div class="container-fluid">
+                <div class="breadcrumb-content text-center">
+                    <h2>Login</h2>
+                    <ul>
+                        <li>
+                            <a href="/login">home</a>
+                        </li>
+                        <li>login</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="login-register-area ptb-90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 ml-auto mr-auto">
+                        <div class="login-register-wrapper">
+                            <div class="tab-content">
+                             <div id="lg1" class="tab-pane active">
+                                    <div class="login-form-container">
+                                        <h2> LOGIN</h2>
+                                        <div class="login-form">
+                                            <span style="font-size:20px; color: orange; " > <%= output %> </span>
+                                            <br>
+                                            <form method="POST" action="/login">        
+                                              
+                                                <!-- /////// -->
+                                                <input type="email" name="email" value="<%= cunm%>" placeholder="Email" id="loginUsername" onfocus="return validate()">
+                                                <p id="loginNameErr"></p>
+
+                                                <input type="password" name="password" value="<%= cpass %>" placeholder="Password" id="loginPassword" onfocus="return validate()">
+                                                <p id="loginPwdErr"></p>
+                                                <!-- ////////// -->
+
+                                                <div class="button-box">
+                                                    <div class="login-toggle-btn">
+                                                        <input type="checkbox" name="chk" id="chk" value="remember" >
+                                                        <label for="chk">Remember me</label>
+                                                        <a href="#">Forgot Password?</a>
+                                                    </div>
+                                                    <button type="submit" class="btn-style cr-btn" onclick="return validate()"><span>Login</span></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="newsletter-area">
+            <div class="container">
+                <div class="newsletter-wrapper-all theme-bg-2">
+                    <div class="row">
+                        <div class="col-lg-5 col-12 col-md-12">
+                            <div class="newsletter-img bg-img" style="background-image: url(img/banner/newsletter-bg.png)">
+                                <img alt="image" src="img/team/newsletter-img.png">
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-12 col-md-12">
+                            <div class="newsletter-wrapper text-center">
+                                <div class="newsletter-title">
+                                    <h3>Subscribe our newsletter</h3>
+                                </div>
+                                <div id="mc_embed_signup" class="subscribe-form">
+                                    <form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                        <div id="mc_embed_signup_scroll" class="mc-form">
+                                            <input type="email" value="" name="EMAIL" class="email" placeholder="Enter your email here..." required>
+                                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                            <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
+                                            <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        <% include footer %>
+
+        <% include footerLinks %>
+    </body>
+</html>

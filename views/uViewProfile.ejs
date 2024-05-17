@@ -1,0 +1,121 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<% include head %>
+<script>
+
+
+
+    function validation() {
+        var flag = true
+        var newPassword = document.getElementById('newPassword').value
+        var confirmPassword = document.getElementById('confirmPassword').value
+        var oldPassword = document.getElementById('oldPassword').value
+
+        var err3 = document.getElementById('err3')
+        var err1 = document.getElementById('err1')
+
+
+        if (newPassword != confirmPassword || newPassword == '' || confirmPassword == '') {
+            flag = false
+            err3.innerHTML = 'New password and Confirm password is not match'
+        }
+        else
+            err3.innerHTML = ""
+
+        if (oldPassword == '') {
+            flag = false
+            err1.innerHTML = 'Old password is empty'
+        }
+        else
+            err1.innerHTML = ""
+
+        return flag
+    }
+</script>
+
+<body>
+    <div class="wrapper">
+        <!-- header start -->
+        <% include userheader %>
+
+        <!-- <% include  slider %> -->
+
+        <div class="breadcrumb-area pt-255 pb-170" style="background-image: url(../img/banner/banner-4.jpg)">
+            <div class="container-fluid">
+                <div class="breadcrumb-content text-center">
+                    <h2>View Profile</h2>
+                    <ul>
+                        <li>
+                            <a href="#">home</a>
+                        </li>
+                        <li>View Profile</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-register-area pt-50 pb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 ml-auto mr-auto">
+                        <div class="login-register-wrapper">
+                            <div class="tab-content">
+                                <div>
+                                    <div class="login-form-container">
+                                        <div class="login-form">
+                                            <h1 class="text-center pb-2">View Profile !!!</h1>
+                                                <input type="hidden" name="uid" value="<%= sunm %>" />
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Name</h5>
+                                                        <p class="card-text"><%= getProfile.name %></p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Email</h5>
+                                                        <p class="card-text"><%= getProfile.email%></p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Address</h5>
+                                                        <p class="card-text"><%= getProfile.address%></p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">City</h5>
+                                                        <p class="card-text"><%= getProfile.city%></p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Mobile</h5>
+                                                        <p class="card-text"><%= getProfile.mobile%></p>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer -->
+
+    </div>
+    <% include footer %>
+
+    <% include footerLinks %>
+</body>
+
+</html>

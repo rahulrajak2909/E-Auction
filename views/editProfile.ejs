@@ -1,0 +1,144 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<% include head %>
+<script>
+    function validate() {
+        var flag = true
+        var Username = document.getElementById('Username').value
+        var Email = document.getElementById('Email').value
+        var Phone = document.getElementById('Phone').value
+        var city = document.getElementById('city').value
+        var address = document.getElementById('address').value
+
+        var err1 = document.getElementById('err1')
+        var err2 = document.getElementById('err2')
+        var err3 = document.getElementById('err3')
+        var err4 = document.getElementById('err4')
+        var err5 = document.getElementById('err5')
+
+
+        if (address == '') {
+            flag = false
+            err5.innerHTML = 'Address is empty'
+        }
+        else
+            err5.innerHTML = ""
+
+        if (city == '') {
+            flag = false
+            err4.innerHTML = 'City is empty'
+        }
+        else
+            err4.innerHTML = ""
+
+        if (Phone == '') {
+            flag = false
+            err3.innerHTML = 'Phone is empty'
+        }
+        else
+            err3.innerHTML = ""
+
+        if (Username == '') {
+            flag = false
+            err1.innerHTML = 'Username is empty'
+        }
+        else
+            err1.innerHTML = ""
+
+        if (Email == '') {
+            flag = false
+            err2.innerHTML = 'Email is empty'
+        }
+        else
+            err2.innerHTML = ""
+
+        return flag
+    }
+</script>
+
+<body>
+    <div class="wrapper">
+        <!-- header start -->
+        <% include adminheader %>
+
+        <!-- <% include  slider %> -->
+
+        <div class="breadcrumb-area pt-255 pb-170" style="background-image: url(../img/banner/banner-4.jpg)">
+            <div class="container-fluid">
+                <div class="breadcrumb-content text-center">
+                    <h2>Edit Profile</h2>
+                    <ul>
+                        <li>
+                            <a href="#">home</a>
+                        </li>
+                        <li>Edit Profile</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-register-area ptb-90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 ml-auto mr-auto">
+                        <div class="login-register-wrapper">
+                            <div class="tab-content">
+
+                                <div>
+                                    <div class="login-form-container">
+                                        <div class="login-form">
+
+                                            <form action="/admin/editProfile" method="post">
+                                                <input type="text" name="Username" id="Username" placeholder="Username" value="<%= getProfile.name %>"
+                                                    onkeyup="return validate()">
+                                                <p id="err1"></p>
+
+                                                <input name="Email" readonly placeholder="Email" id="Email" type="email" value="<%= getProfile.email%>"
+                                                    onkeyup="return validate()">
+                                                <p id="err2"></p>
+
+                                                <input name="Phone" placeholder="Phone" type="tel" id="Phone"
+                                                  value="<%= getProfile.mobile%>"  onkeyup="return validate()">
+                                                <p id="err3"></p>
+
+                                                <select id="city" class="custom-select" name="city"
+                                                    onchange="return validate()">
+                                                    <option value="<%= getProfile.city%>"><b><%= getProfile.city%></b> You Have Selected</option>
+                                                    <option>Select City</option>
+                                                    <% for(let row of cityDetails) { %>
+                                                    <option><%= row.name %></option>
+                                                    <% } %>
+                                                </select>
+                                                <p id="err4"></p>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea id="address" class="form-control" name="address" rows="3"
+                                                placeholder="Address" onkeyup="return validate()"><%= getProfile.address%></textarea>
+                                            <p id="err5"></p>
+                                        </div>
+                                        <div class="button-box">
+                                            <button onclick="return validate()" type="submit"
+                                                class="btn-style cr-btn"><span>Update</span></button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- footer -->
+
+    </div>
+    <% include adminFooter %>
+
+    <% include footerLinks %>
+</body>
+
+</html>

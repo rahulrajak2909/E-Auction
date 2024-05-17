@@ -1,0 +1,84 @@
+<header>
+    <div class="header-area transparent-bar ptb-55">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-4">
+                    <div class="logo-small-device">
+                        <h1>eAuction</h1>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-8">
+                    <div class="header-contact-menu-wrapper pl-45">
+                        <div class="header-contact">
+                            <p>WANT TO TALK WITH US +01254 265 987</p>
+                        </div>
+                        <div class="menu-wrapper text-center">
+                            <button class="menu-toggle">
+                                <img class="s-open" alt="" src="../img/icon-img/menu.png">
+                                <img class="s-close" alt="" src="../img/icon-img/menu-close.png">
+                            </button>
+                            <div class="main-menu">
+                                <nav>
+                                    <ul>
+                                        <li class="active"><a href="/admin">Dasbord</a></li>
+                                        <li><a href="/admin/manageusers">manageusers</a></li>
+                                        <li><a href="/admin/createCat">Manage Options</a>
+                                            <ul>
+                                                <li><a href="/admin/createCat">Create Category</a></li>
+                                                <li><a href="/admin/createSubCat">Create Sub Category</a></li>
+                                                <li><a href="#">Manage Category</a></li>
+                                                <li><a href="#">Manage Sub Category</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- suing sub option from here start -->
+                                        <li><a href="#">Setting</a>
+                                            <ul>
+                                                <li><a href="/admin/changePassword">Change Password</a></li>
+                                                <li><a href="#">Profile</a>
+                                                    <ul>
+                                                        <li><a href="/admin/viewProfile">View Profile</a></li>
+                                                        <li><a href="/admin/editProfile">Edit Profile</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="">Lunch Notification</a></li>
+                                                <li><a href="">View Feadback</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/logout">logout</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-menu-area col-12">
+                    <div class="mobile-menu">
+                        <nav id="mobile-menu-active">
+                            <ul class="menu-overflow">
+                                <li><a href="/">home</a></li>
+                                <li class="active"><a href="adminhome">Dasbord</a></li>
+                                <li><a href="/manageusers">manageusers</a></li>
+                                <li><a href="/logout">logout</a></li>
+                                <!-- <li><a href="blog">blog</a>
+                                            <ul>
+                                                <li><a href="blog">blog page</a></li>
+                                            </ul>
+                                        </li> -->
+                                <!-- <li><a href="contact">contact us</a></li> -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <p id="topOnly">Welcome : <%= sunm %></p>
+</header>
+<style>
+    #topOnly {
+        position: absolute;
+        z-index: 999999;
+        top: 0;
+    }
+</style>

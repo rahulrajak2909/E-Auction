@@ -1,0 +1,220 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<% include head %>
+
+<body>
+    <div class="wrapper">
+        <!-- header start -->
+        <% include userheader %>
+        <style>
+            #iconFile1,
+            #iconFile2,
+            #iconFile3,
+            #iconFile4 {
+                padding: 15px;
+            }
+        </style>
+        <script>
+            function fetchsubcat(cnm) {
+                var xhttp = new XMLHttpRequest()
+                xhttp.open('GET', 'http://localhost:3001/users/fetchsubcatajax?cnm=' + cnm, true)
+                xhttp.send()
+
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        var scobj = JSON.parse(xhttp.responseText)
+                        var sclist = "<option>Select Sub Category</option>"
+                        for (let row of scobj)
+                            sclist += ("<option>" + row.subcatnm + "</option>")
+                        document.getElementById('SubCategryName').innerHTML = sclist
+                    }
+                }
+            }
+        </script>
+        <div class="breadcrumb-area pt-255 pb-170" style="background-image: url(../img/banner/banner-4.jpg)">
+            <div class="container-fluid">
+                <div class="breadcrumb-content text-center">
+                    <h2>Add Products</h2>
+                    <ul>
+                        <li>
+                            <a href="#">home</a>
+                        </li>
+                        <li>Add Products</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-register-area ptb-90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 ml-auto mr-auto">
+                        <div class="login-register-wrapper">
+                            <div class="tab-content">
+
+
+
+                                <div>
+                                    <div class="login-form-container">
+                                        <div class="login-form">
+
+                                            <font style="font-size:20px;" color="orange"><%= output %></font>
+
+                                            <form action="/users/addProduct" method="post"
+                                                enctype="multipart/form-data">
+                                                <label for="Title">Title</label>
+                                                <input type="text" name="Title" id="Title" placeholder="Title">
+                                                <p id="err1"></p>
+
+                                                <label for="categryName">Select Category</label>
+                                                <select id="categryName" class="categryName" name="categryName"
+                                                    onchange="fetchsubcat(this.value)">
+                                                    <option>Select Category</option>
+                                                    <% for(let row of clist) { %>
+                                                    <option><%= row.catnm%> </option>
+                                                    <% } %>
+                                                </select>
+                                                <p id="err2"></p>
+
+                                                <label for="SubCategryName">Select Sub Category</label>
+                                                <select id="SubCategryName" class="SubCategryName"
+                                                    name="SubCategryName">
+                                                    <option>Select Sub Category</option>
+                                                </select>
+                                                <p id="err3"></p>
+
+                                                <label for="Description">Description</label>
+                                                <div class="form-group">
+                                                    <textarea id="Description" class="form-control" name="Description"
+                                                        rows="3" placeholder="Description"></textarea>
+                                                    <p id="err4"></p>
+                                                </div>
+
+
+                                                <label for="AuctionBasePrise">Auction Base Prise</label>
+                                                <input type="text" name="AuctionBasePrise" id="AuctionBasePrise"
+                                                    placeholder="AuctionBasePrise">
+                                                <p id="err5"></p>
+
+                                                <input type="hidden" name="uid" value="<%= sunm %>" />
+
+                                                <label for="ProductIcon">Product Icon</label>
+                                                <input type="file" name="iconFile1" id="iconFile1" required>
+                                                <input type="file" name="iconFile2" id="iconFile2">
+                                                <input type="file" name="iconFile3" id="iconFile3">
+                                                <input type="file" name="iconFile4" id="iconFile4">
+                                                <p id="err6"></p>
+
+                                                <!-- <input type="password" name="user-passwordcnf" placeholder="Confirm Password"> -->
+                                                <div class="button-box">
+                                                    <button type="submit" class="btn-style cr-btn"><span>Add
+                                                            product</span></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <% include  newsLatter %>
+        <!-- footer -->
+        <!-- modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span class="icofont icofont-close" aria-hidden="true"></span>
+            </button>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="qwick-view-left">
+                            <div class="quick-view-learg-img">
+                                <div class="quick-view-tab-content tab-content">
+                                    <div class="tab-pane active show fade" id="modal1" role="tabpanel">
+                                        <img src="../img/quick-view/l1.jpg" alt="">
+                                    </div>
+                                    <div class="tab-pane fade" id="modal2" role="tabpanel">
+                                        <img src="../img/quick-view/l2.jpg" alt="">
+                                    </div>
+                                    <div class="tab-pane fade" id="modal3" role="tabpanel">
+                                        <img src="../img/quick-view/l3.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="quick-view-list nav" role="tablist">
+                                <a class="active" href="#modal1" data-toggle="tab" role="tab">
+                                    <img src="../img/quick-view/s1.jpg" alt="">
+                                </a>
+                                <a href="#modal2" data-toggle="tab" role="tab">
+                                    <img src="../img/quick-view/s2.jpg" alt="">
+                                </a>
+                                <a href="#modal3" data-toggle="tab" role="tab">
+                                    <img src="../img/quick-view/s3.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="qwick-view-right">
+                            <div class="qwick-view-content">
+                                <h3>Aerion Carbon Helmet</h3>
+                                <div class="price">
+                                    <span class="new">$90.00</span>
+                                    <span class="old">$120.00 </span>
+                                </div>
+                                <div class="rating-number">
+                                    <div class="quick-view-rating">
+                                        <i class="fa fa-star reting-color"></i>
+                                        <i class="fa fa-star reting-color"></i>
+                                        <i class="fa fa-star reting-color"></i>
+                                        <i class="fa fa-star reting-color"></i>
+                                        <i class="fa fa-star reting-color"></i>
+                                    </div>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do tempor incididun ut labore
+                                    et dolore magna aliqua. Ut enim ad mi , quis nostrud veniam exercitation .</p>
+                                <div class="quick-view-select">
+                                    <div class="select-option-part">
+                                        <label>Size*</label>
+                                        <select class="select">
+                                            <option value="">- Please Select -</option>
+                                            <option value="">900</option>
+                                            <option value="">700</option>
+                                        </select>
+                                    </div>
+                                    <div class="select-option-part">
+                                        <label>Color*</label>
+                                        <select class="select">
+                                            <option value="">- Please Select -</option>
+                                            <option value="">orange</option>
+                                            <option value="">pink</option>
+                                            <option value="">yellow</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="quickview-plus-minus">
+                                    <div class="cart-plus-minus">
+                                        <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                                    </div>
+                                    <div class="quickview-btn-cart">
+                                        <a class="btn-style" href="#">add to cart</a>
+                                    </div>
+                                    <div class="quickview-btn-wishlist">
+                                        <a class="btn-hover" href="#"><i class="icofont icofont-heart-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include footer %>
+
+    <% include footerLinks %>
+</body>
+
+</html>

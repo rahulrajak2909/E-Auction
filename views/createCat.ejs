@@ -1,0 +1,98 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+  <% include head %>
+  <style>
+  #uploadFile {
+    padding: 13px;
+}
+  </style>
+<script>
+    function validate(){
+        flag = true
+        var catnm = document.getElementById('catnm').value
+        var uploadFile=document.getElementById('uploadFile').value
+
+        var err1=document.getElementById('err1')
+        var err2=document.getElementById('err2')
+        
+        if(uploadFile == ''){
+            err2.innerHTML='please enter Catagory icon IMAGE then try'
+            flag=false           
+        }
+        else{
+            err2.innerHTML=''
+        }
+
+        if(catnm == ''){
+            err1.innerHTML='please enter Catagory Name then try'
+            flag=false           
+        }
+        else{
+            err1.innerHTML=''
+        }
+        return flag
+    }
+</script>
+    <body>
+        <div class="wrapper">
+            <!-- header start -->
+        <% include adminheader %>
+
+        <div class="overview-area pt-135 pb-20" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="overview-content p-3" style="background-color: #ffb52f;">
+                            <h1>Manage Your Category From Here</h1>                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="login-register-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 ml-auto mr-auto">
+                        <div class="login-register-wrapper">
+                            <div class="tab-content">
+                             <div id="lg1" class="tab-pane active">
+                                    <!-- /////////////// -->                                    
+                                    <div class=" ptb-20 login-form-container">
+                                        <div class="login-form">
+                                            <span style="font-size:20px; color: orange; " > <%= result %> </span>
+                                            <br>
+                                            <form method="POST" action="/admin/createCat" enctype="multipart/form-data">      
+                                                <label for="uploadFile">Category Name</label>  
+                                                <input type="text" name="catnm" id="catnm">
+                                                <p id="err1"></p>
+                                                <label for="uploadFile">Category image</label>
+                                                <input type="file" name="caticon" id="uploadFile">
+                                                <p id="err2"></p>
+                                                <div class="button-box">
+                                                    <button  onclick="return validate()" type="submit" class="btn-style cr-btn"><span>Register</span></button>
+                                                </div>
+                                            </form>
+                                            </div>
+                                    </div>
+                                    <!-- ///////////////// -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          
+            <!-- footer -->
+           
+        </div>
+        <% include adminFooter %>
+
+        <% include footerLinks %>
+    </body>
+</html>

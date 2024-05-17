@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+  <% include head %>
+
+    <body>
+        <div class="wrapper">
+            <!-- header start -->
+        <% include adminheader %>
+
+        <!-- <% include  slider %> -->
+            
+            
+            <div class="overview-area pt-135 pb-20" >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="overview-content p-3" style="background-color: #ffb52f;">
+                                <h1>Manage User Table From Here</h1>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overview-area  pb-100" >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <table border="2" align="center" style="text-align: center;" cellpadding="5">
+                                <tr>
+                                <th>RegID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Mobile</th>
+                                <th>City</th>
+                                <th>Gender</th>
+                                <th>Info</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                                </tr>
+                                
+                                <% for(let row of userDetails) { %>
+                                <tr>
+                                <td><%= row._id %></td>
+                                <td><%= row.name %></td>
+                                <td><%= row.email %></td>
+                                <td><%= row.address %></td>
+                                <td><%= row.mobile %></td>
+                                <td><%= row.city %></td>
+                                <td><%= row.gender %></td>
+                                <td><%= row.info %></td>
+                                <td><% if(row.status==1) {%>
+                                <a href="/admin/manageUserStatus?regid=<%= row._id %>&s=block" title="Block User"><img src="../img/blockuser.png" alt="Block User" width="70" height="50"></a>
+                                <% } else { %>
+                                    <a href="/admin/manageUserStatus?regid=<%= row._id %>&s=unblock" title="Un Block User"><img src="../img/unblock.jpeg" alt="unblock User" width="70" height="50"></a>
+                                <% } %>                                
+                                </td>
+                                <td>
+                                    <a href="/admin/manageUserStatus?regid=<%= row._id %>&s=delete" title="Delete User"><img src="../img/delete.png" alt="Delete user" width="70" height="50"></a>
+                                </td>
+                                </tr>
+                                  <% } %>
+                                </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <% include adminFooter %>
+
+        <% include footerLinks %>
+    </body>
+</html>

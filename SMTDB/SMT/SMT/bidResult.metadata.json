@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"SMT.bidResult"}],"uuid":"b52556c7d4114cd286e56000e1e2c072"}

@@ -1,0 +1,117 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+  <% include head %>
+  <style>
+  #subcaticon {
+    padding: 13px;
+}
+  </style>
+<script>
+    function validate(){
+        flag = true
+        var catnm=document.getElementById('catnm').value
+        var subcatnm = document.getElementById('subcatnm').value
+        var subcaticon = document.getElementById('subcaticon').value
+
+        var err1=document.getElementById('err1')
+        var err2=document.getElementById('err2')
+        var err3=document.getElementById('err3')
+        if(catnm == ''){
+            err1.innerHTML='please enter Catagory Name then try'
+            flag=false           
+        }
+        else{
+            err1.innerHTML=''
+        }
+
+        if(subcatnm == ''){
+            err2.innerHTML='please enter Catagory Name then try'
+            flag=false           
+        }
+        else{
+            err2.innerHTML=''
+        }
+
+        if(subcaticon == ''){
+            err3.innerHTML='please enter Catagory icon then try'
+            flag=false           
+        }
+        else{
+            err3.innerHTML=''
+        }
+        return flag
+    }
+</script>
+    <body>
+        <div class="wrapper">
+            <!-- header start -->
+        <% include adminheader %>
+
+        <div class="overview-area pt-135 pb-20" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="overview-content p-3" style="background-color: #ffb52f;">
+                            <h1>Manage Your Sub Category From Here</h1>                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="login-register-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 ml-auto mr-auto">
+                        <div class="login-register-wrapper">
+                            <div class="tab-content">
+                             <div id="lg1" class="tab-pane active">
+                                    <!-- /////////////// -->                                    
+                                    <div class="login-form-container">
+                                        <div class="login-form">
+                                            <span style="font-size:20px; color: orange; " > <%= result %> </span>
+                                            <br>
+                                            <form method="POST" action="/admin/createSubCat" enctype="multipart/form-data">
+                                                <label for="catnm">Sub Category Name</label>  
+                                                <select  id="catnm" class="catnm" name="catnm" onchange="return validate()">
+                                                    <option>Select Sub Category</option>
+                                                    <% for(let row of clist) {%>
+                                                    <option value="<%= row.catnm%>"><%= row.catnm%></option>
+                                                    <% } %>
+                                                </select>
+                                                <p id="err1"></p>      
+
+
+                                                <label for="subcatnm">Sub Category Name</label>  
+                                                <input type="text" name="subcatnm" id="subcatnm" onkeyup="return validate()">
+                                                <p id="err2"></p>
+
+
+                                                <label for="subcaticon">Sub Category image</label>
+                                                <input type="file" name="subcaticon" id="subcaticon" onkeyup="return validate()">
+                                                <p id="err3"></p>
+
+
+                                                <div class="button-box">
+                                                    <button  onclick="return validate()" type="submit" class="btn-style cr-btn"><span>Register</span></button>
+                                                </div>
+                                            </form>
+                                            </div>
+                                    </div>
+                                    <!-- ///////////////// -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          
+            <!-- footer -->
+           
+        </div>
+        <% include adminFooter %>
+
+        <% include footerLinks %>
+    </body>
+</html>

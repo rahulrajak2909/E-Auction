@@ -1,0 +1,8 @@
+merchant : sb-m43j81317944@business.example.com
+
+
+buyer : sb-xsiut6158969@personal.example.com
+pass : 123qwe@@123qwe
+
+
+

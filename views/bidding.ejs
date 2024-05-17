@@ -1,0 +1,215 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+  <% include head %>
+
+    <body>
+        <div class="wrapper">
+            <!-- header start -->
+        <% include userheader %>
+        <script>
+        function validate(){
+            var flag = true
+
+            var Username=document.getElementById('Username').value
+            var Email=document.getElementById('Email').value
+            var Password=document.getElementById('Password').value
+            var Phone=document.getElementById("Phone").value
+            var city=document.getElementById("city").value
+            var male=document.getElementById('male').checked
+            var female=document.getElementById('female').checked
+            var address=document.getElementById('address').value
+
+            var err1=document.getElementById('err1')
+            var err2=document.getElementById('err2')
+            var err3=document.getElementById('err3')
+            var err4=document.getElementById('err4')
+            var err5=document.getElementById('err5')
+            var err6=document.getElementById('err6')
+            var err7=document.getElementById('err7')
+
+
+            if(address==''){
+                err7.innerHTML="Please Enter Your Address"
+                flag=false
+            }
+            else{
+                err7.innerHTML=""
+            }          
+
+
+
+            if(male==false && female==false){
+                err6.innerHTML="Please Select gender"
+                flag=false
+            }
+            else{
+                err6.innerHTML=""
+            }            
+            
+
+
+            if(city==0){
+                err5.innerHTML="Please enter City Name"
+                flag=false
+            }
+            else{
+                err5.innerHTML=""
+            }
+
+
+
+
+            if(Phone==''){
+                err4.innerHTML="Please enter phone number"
+                flag=false
+            }
+            else if(isNaN(Phone)){
+                err4.innerHTML="Please enter only number digits "
+                flag=false
+            }
+            else if(Phone.length != 10){
+                err4.innerHTML="Please enter 10 digits "
+                flag=false
+            }
+            else{
+                err4.innerHTML=""
+            }
+
+            
+
+
+            if(Password==''){
+                err3.innerHTML="Please enter Password*"
+                flag=false
+            }
+            else if(Password.length<4 || Password.length>8){
+                err3.innerHTML="password will be min 5 char to 8 char"
+                flag=false
+            }
+            else{
+                err3.innerHTML=""
+            }
+
+
+
+
+            if(Email==''){
+                err2.innerHTML="Please enter email*"
+                flag=false
+            }
+            else{
+                err2.innerHTML=""
+            }
+            
+
+
+            if(Username==''){
+                err1.innerHTML="Please enter name*"
+                flag=false
+            }
+            else{
+                err1.innerHTML=""
+            }
+
+            return flag
+        }       
+        </script>   
+        
+        <div class="breadcrumb-area pt-255 pb-170" style="background-image: url(../img/banner/banner-4.jpg)">
+            <div class="container-fluid">
+                <div class="breadcrumb-content text-center">
+                    <h2>Bidding</h2>
+                    <ul>
+                        <li>
+                            <a href="#">home</a>
+                        </li>
+                        <li>Bidding</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="login-register-area ptb-90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 ml-auto mr-auto">
+                        <div class="login-register-wrapper">
+                            <div class="tab-content">
+                                
+                                
+                                <div >
+                                    <div class="login-form-container">
+                                        <div class="login-form">
+                                           
+                                            <form method="post" action="/users/bidding">
+                                                <table class="table table-bordered">
+                                                <tr>
+                                                    <td colspan="2"><center><h1>Make A Bid To Buy Product</h1></center></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bidding Product Id</td>
+                                                    <td><input readonly type="text" name="pid" value="<%= plist._id %>" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bidding Base Price</td>
+                                                    <td><input readonly type="text" value="<%= plist.AuctionBasePrise %>" /></td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Current Bidding Price</td>
+                                                  <td><input readonly type="text" value="<%= currentPrice %>" /></td>
+                                                </tr>
+                                                <tr>
+                                                  <td>New Bidding Price</td>
+                                                  <td><input type="text" name="biddingprice" placeholder="Enter Your Bidding Price" /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><center><input type="submit" value="Bid Product" /></center></td>
+                                                </tr>
+                                                </table>
+                                                </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="newsletter-area">
+            <div class="container">
+                <div class="newsletter-wrapper-all theme-bg-2">
+                    <div class="row">
+                        <div class="col-lg-5 col-12 col-md-12">
+                            <div class="newsletter-img bg-img" style="background-image: url(../img/banner/newsletter-bg.png)">
+                                <img alt="image" src="../img/team/newsletter-img.png">
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-12 col-md-12">
+                            <div class="newsletter-wrapper text-center">
+                                <div class="newsletter-title">
+                                    <h3>Subscribe our newsletter</h3>
+                                </div>
+                                <div id="mc_embed_signup" class="subscribe-form">
+                                    <form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                        <div id="mc_embed_signup_scroll" class="mc-form">
+                                            <input type="email" value="" name="EMAIL" class="email" placeholder="Enter your email here..." required>
+                                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                            <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
+                                            <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        <% include footer %>
+
+        <% include footerLinks %>
+    </body>
+</html>
